@@ -10,6 +10,7 @@
 
 / {
     chosen {
+        zephyr,display = &oled;
         zmk,kscan = &kscan0;
         zmk,physical-layout = &layout_ortho_5x12_all1u;
     };
@@ -36,8 +37,8 @@
         row-gpios
             = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
 
@@ -58,10 +59,6 @@
     };
 };
 
-&layout_ortho_5x12_all1u {
-    transform = <&matrix_transform_50_all1u>;
-};
-
 &pro_micro_i2c {
     status = "okay";
 
@@ -80,4 +77,8 @@
         inversion-on;
         prechargep = <0x22>;
     };
+};
+
+&layout_ortho_5x12_all1u {
+    transform = <&matrix_transform_50_all1u>;
 };
