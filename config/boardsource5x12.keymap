@@ -10,17 +10,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
-/{
-    prog_caps: prog_caps {
-
-    compatible = "zmk,behavior-caps-word"; 
-
-    #binding-cells = <0>; 
-
-    display-name = "CAPS";  
-
-  };
-  
+/ { 
     keymap {
         compatible = "zmk,keymap";
 
