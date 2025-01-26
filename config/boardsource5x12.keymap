@@ -3,6 +3,7 @@
  *
  * SPDX-License-Identifier: MIT
  */
+#define ZMK_BEHAVIORS_OMIT_KT
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -14,30 +15,18 @@
         compatible = "zmk,keymap";
 
         JassonLayout {
-            // ------------------------------------------------------------------------------------------
-            // |  ESC  |  1   |  2   |  3   |  4   |  5   |   6   |  7    |  8   |  9   |   0   | BSPC  |
-            // |  TAB  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   |  \    |
-            // | SHIFT |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
-            // | CTRL  |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   | ENTER |
-            // |ADJUST | LCTL | LALT | LGUI | LOWR | SPACE| SPACE |  RAIS | LEFT | DOWN | UARW  | RARW  |
-
+            display-name = "BASE";
             bindings = <
 &kp ESC           &kp N1     &kp N2        &kp N3  &kp N4        &kp N5     &kp N6     &kp N7         &kp N8     &kp N9   &kp N0    &kp MINUS
 &kp TAB           &kp Q      &kp W         &kp E   &kp R         &kp T      &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSLH
 &kp CAPSLOCK      &kp A      &kp S         &kp D   &kp F         &kp G      &kp H      &kp J          &kp K      &kp L    &kp SEMI  &kp ENTER
-&kp LEFT_SHIFT    &kp Z      &kp X         &kp C   &kp V         &kp B      &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH  &tog 5
+&kp LEFT_SHIFT    &kp Z      &kp X         &kp C   &kp V         &kp B      &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
 &kp LEFT_CONTROL  &kp GRAVE  &kp LEFT_WIN  &mo 1   &kp LEFT_ALT  &kp SPACE  &kp SPACE  &kp BACKSPACE  &mo 2      &tog 3   &tog 1    &mo 4
             >;
         };
 
         lower_layer {
-            // -------------------------------------------------------------------------------------------
-            // |  ESC  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7  |  F8   |  F9  | F10  |  F11  |  F12  |
-            // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |  *   |  (   |   )   |  DEL  |
-            // |       |  F1  |  F2  |  F3  |  F4  |  F5  |   F6  |   _   |  +   |  {   |   }   |   |   |
-            // |       |  F7  |  F8  |  F9  |  F10 |  F11 |   F12 | LS(#) |LS(|) |      |       |       |
-            // |       |      |      |      |      |      |       |       | NEXT | Vol- | Vol+ | PLAY   |
-
+            display-name = "LOW";
             bindings = <
 &kp F11  &kp F1  &kp F2  &kp F3  &kp F4           &kp F5  &kp F6             &kp F7          &kp F8          &kp F9           &kp F10               &kp F12
 &none    &none   &none   &none   &none            &none   &kp C_VOL_UP       &kp K_MUTE      &kp UP_ARROW    &none            &kp C_BRIGHTNESS_INC  &none
@@ -47,7 +36,8 @@
             >;
         };
 
-        layer_6 {
+        Missing {
+            display-name = "MISS";
             bindings = <
 &none   &none  &none  &none      &none             &none   &none   &none              &none                 &none  &none  &kp EQUAL
 &none   &none  &none  &none      &none             &none   &none   &none              &none                 &none  &none  &none
@@ -57,7 +47,8 @@
             >;
         };
 
-        layer_5 {
+        Numpad {
+            display-name = "NUM";
             bindings = <
 &none  &none  &none  &none  &none  &none   &none   &none          &none         &none         &none  &none
 &none  &none  &none  &none  &none  &none   &none   &kp NUMBER_1   &kp NUMBER_2  &kp NUMBER_3  &none  &none
@@ -67,14 +58,8 @@
             >;
         };
 
-        flock_layer {
-            // ----------------------------------------------------------------------------------------------
-            // |tog(4) |  F2    |   F3   |   F4   |   F5   |   F6   |  F7  |  F8  |  F9  | F10 | F11 |      |
-            // |out tog|BT_SEL 0|BT_SEL 1|BT_SEL 2|BT_SEL 3|BT_SEL 4|BT_PRV|BT_NXT|BT_CLR|     |     |      |
-            // |       |        |        |        |        |        |      |      |      |     |     |      |
-            // |       |        |        |        |        |        |      |      |      |     |     |      |
-            // |       |        |        |        |        |        |      |      |      |     |     |      |
-
+        Bluetooth {
+            display-name = "BT";
             bindings = <
 &out OUT_TOG    &none         &none         &none         &none         &none         &none  &none  &none  &none  &none  &bootloader
 &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none  &none  &none  &none
@@ -84,7 +69,8 @@
             >;
         };
 
-        JoLayout {
+        JoannaLayer {
+            display-name = "Jo";
             bindings = <
 &kp ESC           &kp N1            &kp N2        &kp N3             &kp N4        &kp N5     &kp N6     &kp N7   &kp N8     &kp N9        &kp N0         &kp MINUS
 &kp TAB           &kp Q             &kp W         &kp E              &kp R         &kp T      &kp Y      &kp U    &kp I      &kp O         &kp P          &kp BACKSPACE
@@ -93,5 +79,23 @@
 &kp LEFT_CONTROL  &kp LEFT_BRACKET  &kp LEFT_WIN  &kp RIGHT_BRACKET  &kp LEFT_ALT  &kp SPACE  &kp SPACE  &kp SQT  &kp MINUS  &kp QUESTION  &kp BACKSLASH  &trans
             >;
         };
+
+        extra_1 {
+            status = "reserved";
+        };
+
+        extra_2 {
+            status = "reserved";
+        };
+
+        extra_3 {
+            status = "reserved";
+        };
+
+         extra_4 {
+            status = "reserved";
+        };
+
+
     };
 };
