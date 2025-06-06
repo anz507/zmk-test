@@ -21,4 +21,4 @@ include:
   - board: nice_nano_v2
     shield: boardsource5x12
     snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    # cmake-args: -DCONFIG_ZMK_STUDIO=y
